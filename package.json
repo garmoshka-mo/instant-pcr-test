@@ -1,0 +1,16 @@
+{
+  "name": "instant-pcr-test",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "main": "index.js",
+  "type": "module",
+  "repository": "git@github.com:garmoshka-mo/instant-pcr-test.git",
+  "author": "Daniel <d@coav.ru>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.2",
+    "pdf-lib": "^1.17.1"
+  }
+}
