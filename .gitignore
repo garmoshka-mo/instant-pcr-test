@@ -2,3 +2,4 @@ node_modules/
 .idea/
 pcr_test_result.pdf
 yarn-error.log
+.DS_Store
