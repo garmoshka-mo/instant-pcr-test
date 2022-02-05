@@ -1,11 +1,21 @@
 import PcrTestGenerator from './PcrTestGenerator.js'
 import express from 'express'
+import bodyParser from 'body-parser'
 const app = express()
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 
 app.get('/', async (req, res) => {
-  await new PcrTestGenerator("pcr_test_template.pdf")
-    .generate("pcr_test_result.pdf")
-  res.send('Hello World')
+  res.sendFile('form.html', { root: '.' })
+})
+
+app.post('/', async (req, res) => {
+  var generator = new PcrTestGenerator("pcr_test_template.pdf")
+  const fields = ['name', 'daysAgo', 'birthYear', 'gender']
+  fields.forEach((field) => generator[field] = req.body[field])
+  await generator.generate("pcr_test_result.pdf")
+  res.sendFile('pcr_test_result.pdf', { root: '.' })
 })
 
 const PORT = 3005
