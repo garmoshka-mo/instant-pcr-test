@@ -1,8 +1,14 @@
 import fs from 'fs'
 import { degrees, PDFDocument, rgb } from 'pdf-lib';
 import fontkit from '@pdf-lib/fontkit';
+import moment from 'moment';
 
 export default class PcrTestGenerator {
+
+  name = 'KUCHERENKO DANYLO'
+  daysAgo = 1
+  birthYear = 1987
+  gender = "Male"
 
   constructor(sourcePath) {
     this.existingPdfBytes = fs.readFileSync(sourcePath)
@@ -27,7 +33,7 @@ export default class PcrTestGenerator {
     const { width, height } = this.activePage.getSize()
     this.height = height
 
-    this.activePage.drawText('KUCHERENKO DANYLO', {
+    this.activePage.drawText(this.name, {
       x: 150.5,
       y: height - 135.5,
       size: 11,
@@ -35,11 +41,14 @@ export default class PcrTestGenerator {
       // color: rgb(0.95, 0.1, 0.1),
     })
 
-    this.drawSimpleLine("21/01/2022  15:39", 105)
-    this.drawSimpleLine("21/01/2022  20:05", 120)
-    this.drawSimpleLine("15.01.1987", 151)
-    this.drawSimpleLine("35 Y 11 M", 166)
-    this.drawSimpleLine("Male", 182)
+    var date = moment().subtract(this.daysAgo, 'days').format("DD/MM/YYYY")
+    this.drawSimpleLine(`${date}  15:39`, 105)
+    this.drawSimpleLine(`${date}  20:05`, 120)
+    this.drawSimpleLine(`15.01.${this.birthYear}`, 151)
+    var years = moment().diff(`${this.birthYear}-01-15`, 'years')
+    var months = moment().diff(`${this.birthYear}-01-15`, 'months') - years * 12;
+    this.drawSimpleLine(`${years} Y ${months} M`, 166)
+    this.drawSimpleLine(this.gender, 182)
 
     const pdfBytes = await this.pdfDoc.save()
     fs.writeFileSync(targetPath, pdfBytes)
