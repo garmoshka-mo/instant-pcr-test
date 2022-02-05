@@ -15,7 +15,7 @@ app.post('/', async (req, res) => {
   const fields = ['name', 'daysAgo', 'birthYear', 'gender']
   fields.forEach((field) => generator[field] = req.body[field])
   await generator.generate("pcr_test_result.pdf")
-  res.sendFile('pcr_test_result.pdf', { root: '.' })
+  res.download('pcr_test_result.pdf', 'pcr.pdf')
 })
 
 const PORT = 3005
