@@ -2,9 +2,30 @@
 
 <form action="/" method="POST">
 
+  <br>
+
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name" style="width: 300px"
+         value="KUCHERENKO DANYLO"><br>
+  <br>
+
+  <label for="birthYear">birthYear:</label>
+  <input type="text" id="birthYear" name="birthYear" value="1987"><br>
+  <br>
+
+  <label for="gender">gender:</label>
+  <input type="text" id="gender" name="gender" value="Male"><br>
+  <br/>
+
   <div>
     <input type="radio" id="1" name="daysAgo" value="1" checked>
     <label for="1">вчера</label>
+    <br/>
+    <input type="radio" id="2" name="daysAgo" value="2">
+    <label for="2">позавчера</label>
+    <br/>
+    <input type="radio" id="3" name="daysAgo" value="3">
+    <label for="3">3 дня назад</label>
     <br/>
 
     <input type="radio" id="4" name="daysAgo" value="4">
@@ -13,21 +34,11 @@
 
     <input type="radio" id="5" name="daysAgo" value="5">
     <label for="5">2 дня просрочки</label>
+    <br/>
+
   </div>
 
   <br>
-  <label for="name">Name:</label>
-  <input type="text" id="name" name="name" style="width: 300px"
-         value="KUCHERENKO DANYLO"><br>
-
-  <br>
-  <label for="birthYear">birthYear:</label>
-  <input type="text" id="birthYear" name="birthYear" value="1987"><br>
-
-  <br>
-  <label for="gender">gender:</label>
-  <input type="text" id="gender" name="gender" value="Male"><br>
-
-  <br><br>
   <input type="submit" value="Submit">
+
 </form>
